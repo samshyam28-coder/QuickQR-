@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free QR Code Generator</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Modern QR Code Library (Supports colors & SVG export natively) -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <h1>QuickQR</h1>
+    </div>
+    <p class="tagline">100% Free, Private & Permanent QR Code Generator</p>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="app-container">
+    
+    <!-- LEFT PANEL: CONTROLS & INPUTS -->
+    <section class="panel controls-panel">
+      
+      <!-- Category Tabs -->
+      <div class="tab-group">
+        <button class="tab-btn active" data-tab="url">🔗 Link</button>
+        <button class="tab-btn" data-tab="text">📝 Text</button>
+        <button class="tab-btn" data-tab="wifi">📶 Wi-Fi</button>
+      </div>
+
+      <!-- Input Sections -->
+      <div class="input-group-container">
+        
+        <!-- URL Input -->
+        <div class="input-tab-content active" id="tab-url">
+          <label for="url-input">Target URL</label>
+          <input type="url" id="url-input" placeholder="https://example.com" value="https://example.com" />
+        </div>
+
+        <!-- Text Input -->
+        <div class="input-tab-content" id="tab-text">
+          <label for="text-input">Plain Text Content</label>
+          <textarea id="text-input" rows="4" placeholder="Enter any text here..."></textarea>
+        </div>
+
+        <!-- Wi-Fi Input -->
+        <div class="input-tab-content" id="tab-wifi">
+          <div class="field-row">
+            <label for="wifi-ssid">Network Name (SSID)</label>
+            <input type="text" id="wifi-ssid" placeholder="My Home Wi-Fi" />
+          </div>
+          <div class="field-row">
+            <label for="wifi-password">Password</label>
+            <input type="password" id="wifi-password" placeholder="Enter password" />
+          </div>
+          <div class="field-row">
+            <label for="wifi-encryption">Security Type</label>
+            <select id="wifi-encryption">
+              <option value="WPA">WPA / WPA2 / WPA3</option>
+              <option value="WEP">WEP</option>
+              <option value="nopass">None (Open)</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Customization Accordion / Options -->
+      <div class="customization-section">
+        <h3>Customization</h3>
+
+        <div class="options-grid">
+          <!-- Foreground Color -->
+          <div class="option-item">
+            <label for="color-fg">QR Code Color</label>
+            <div class="color-picker-wrapper">
+              <input type="color" id="color-fg" value="#000000" />
+              <span id="hex-fg">#000000</span>
+            </div>
+          </div>
+
+          <!-- Background Color -->
+          <div class="option-item">
+            <label for="color-bg">Background Color</label>
+            <div class="color-picker-wrapper">
+              <input type="color" id="color-bg" value="#ffffff" />
+              <span id="hex-bg">#ffffff</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Size Slider -->
+        <div class="option-item slider-item">
+          <label for="qr-size">Output Resolution: <span id="size-value">300x300 px</span></label>
+          <input type="range" id="qr-size" min="200" max="800" step="50" value="300" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT PANEL: LIVE PREVIEW & EXPORT -->
+    <section class="panel preview-panel">
+      <div class="preview-card">
+        <div class="preview-header">
+          <span>Live Preview</span>
+          <span class="badge">Static (Never Expires)</span>
+        </div>
+
+        <!-- QR Display Container -->
+        <div id="qr-canvas-wrapper" class="qr-box"></div>
+
+        <!-- Export Action Buttons -->
+        <div class="export-actions">
+          <button id="btn-download-png" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PNG
+          </button>
+          <button id="btn-download-svg" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download SVG
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <p>Generated static QR codes are 100% free for commercial and personal use.</p>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
